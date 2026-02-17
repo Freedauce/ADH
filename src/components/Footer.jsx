@@ -74,14 +74,12 @@ export default function Footer() {
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mb-16">
                     {/* Brand */}
                     <div className="col-span-2">
-                        <Link to="/" className="flex items-center gap-3 mb-5">
-                            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-adhi-orange to-adhi-orange-dark flex items-center justify-center font-bold text-white text-lg">
-                                A
-                            </div>
-                            <div className="flex flex-col">
-                                <span className="text-xl font-bold text-white leading-none">ADHI</span>
-                                <span className="text-[10px] text-adhi-gray-500 uppercase tracking-widest">Housing Initiative</span>
-                            </div>
+                        <Link to="/" className="flex items-center mb-5">
+                            <img
+                                src="/adhi-logo.png"
+                                alt="ADHI Logo"
+                                className="h-14 w-auto object-contain"
+                            />
                         </Link>
                         <p className="text-adhi-gray-400 text-sm leading-relaxed mb-5 max-w-xs">
                             African Development Housing Initiative. Digitizing housing infrastructure across Africa through procurement, carbon accountability, and franchise scalability.

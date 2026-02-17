@@ -30,41 +30,34 @@ export default function Navbar() {
     return (
         <nav
             id="main-nav"
-            className={`absolute top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
+            className={`absolute top-0 left-0 right-0 z-50 transition-all duration-500 overflow-hidden ${isScrolled
                 ? 'bg-black/90 backdrop-blur-2xl border-b border-adhi-orange/10 py-2'
                 : 'bg-transparent py-4'
                 }`}
         >
             <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
                 {/* Logo */}
-                <Link to="/" className="flex items-center gap-3 group">
-                    <div className="relative">
-                        <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-adhi-orange to-adhi-orange-dark flex items-center justify-center font-bold text-white text-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-adhi-orange/30">
-                            A
-                        </div>
-                        <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-500 border-2 border-black" />
-                    </div>
-                    <div className="flex flex-col">
-                        <span className="text-xl font-bold tracking-tight text-white leading-none">ADHI</span>
-                        <span className="text-[10px] text-adhi-gray-500 uppercase tracking-[0.2em] leading-none mt-0.5">Housing Initiative</span>
-                    </div>
+                <Link to="/" className="flex items-center group">
+                    <img
+                        src="/adhi-logo.png"
+                        alt="ADHI Logo"
+                        className="h-14 w-auto object-contain transition-all duration-300 group-hover:scale-105"
+                    />
                 </Link>
 
                 {/* Desktop Links */}
-                <div className="hidden lg:flex items-center gap-0.5">
+                <div className="hidden lg:flex items-center gap-5">
                     {navLinks.map((link) => {
-                        const Icon = link.icon;
                         const isActive = location.pathname === link.path;
                         return (
                             <Link
                                 key={link.path}
                                 to={link.path}
-                                className={`relative px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 flex items-center gap-2 ${isActive
+                                className={`relative px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${isActive
                                     ? 'text-adhi-orange bg-adhi-orange/10'
                                     : 'text-adhi-gray-400 hover:text-white hover:bg-white/5'
                                     }`}
                             >
-                                <Icon size={15} />
                                 {link.label}
                                 {isActive && (
                                     <motion.div
@@ -85,7 +78,6 @@ export default function Navbar() {
                         href="mailto:info@adhi.africa"
                         className="hidden lg:inline-flex items-center gap-2 text-adhi-gray-400 hover:text-white text-sm transition-colors duration-300 px-3 py-2"
                     >
-                        <Phone size={14} />
                         <span>Contact</span>
                     </a>
 
@@ -94,7 +86,6 @@ export default function Navbar() {
                         to="/investor"
                         className="hidden md:inline-flex btn-primary text-sm !py-2.5 !px-5"
                     >
-                        <BarChart3 size={15} />
                         Invest Now
                     </Link>
 

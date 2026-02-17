@@ -311,45 +311,59 @@ export default function FranchisePlatform() {
                     </div>
 
                     {/* ===== HOW TO BECOME A FRANCHISE ===== */}
-                    <div>
+                    <div className="mt-8">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6 }}
-                            className="text-center mb-12"
+                            className="text-center mb-16"
                         >
                             <span className="section-label">Get Started</span>
-                            <h2 className="text-2xl md:text-3xl font-bold text-white mt-4 mb-3">
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mt-5 mb-5 tracking-wide">
                                 How to Become an <span className="gradient-text">ADHI Franchise Partner</span>
                             </h2>
+                            <p className="text-adhi-gray-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+                                Four simple steps to join Africa's fastest-growing housing construction network.
+                            </p>
                         </motion.div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                            {[
-                                { step: 1, title: 'Apply', desc: 'Submit your franchise application with details on your construction experience, market, and business plan.', icon: GraduationCap },
-                                { step: 2, title: 'Train', desc: 'Complete 6 training modules covering ADHI methodology, procurement, quality assurance, and project management.', icon: BookOpen },
-                                { step: 3, title: 'Certify', desc: 'Pass quality assessments to earn ADHI Builder Certification. Receive your franchise license and house kits.', icon: Award },
-                                { step: 4, title: 'Build', desc: 'Begin construction using ADHI standardized kits, digital procurement, and ongoing support from headquarters.', icon: Zap },
-                            ].map((item, i) => (
-                                <motion.div
-                                    key={item.step}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.5, delay: i * 0.1 }}
-                                    className="glass-card p-6 text-center relative"
-                                >
-                                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-adhi-orange text-white text-xs font-bold flex items-center justify-center">
-                                        {item.step}
-                                    </div>
-                                    <div className="w-14 h-14 rounded-2xl bg-adhi-orange/10 flex items-center justify-center mx-auto mb-4 mt-2">
-                                        <item.icon size={24} className="text-adhi-orange" />
-                                    </div>
-                                    <h3 className="text-white font-semibold text-base mb-2">{item.title}</h3>
-                                    <p className="text-adhi-gray-400 text-xs leading-relaxed">{item.desc}</p>
-                                </motion.div>
-                            ))}
+                        {/* Steps Grid */}
+                        <div className="relative">
+                            {/* Connecting line (desktop only) */}
+                            <div className="hidden lg:block absolute top-[72px] left-[12%] right-[12%] h-[2px] bg-gradient-to-r from-adhi-orange/0 via-adhi-orange/30 to-adhi-orange/0" />
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+                                {[
+                                    { step: 1, title: 'Apply', desc: 'Submit your franchise application with details on your construction experience, market, and business plan.', icon: GraduationCap },
+                                    { step: 2, title: 'Train', desc: 'Complete 6 training modules covering ADHI methodology, procurement, quality assurance, and project management.', icon: BookOpen },
+                                    { step: 3, title: 'Certify', desc: 'Pass quality assessments to earn ADHI Builder Certification. Receive your franchise license and house kits.', icon: Award },
+                                    { step: 4, title: 'Build', desc: 'Begin construction using ADHI standardized kits, digital procurement, and ongoing support from headquarters.', icon: Zap },
+                                ].map((item, i) => (
+                                    <motion.div
+                                        key={item.step}
+                                        initial={{ opacity: 0, y: 30 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.6, delay: i * 0.12 }}
+                                        className="relative rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] hover:border-adhi-orange/20 transition-all duration-400 p-8 text-center group"
+                                    >
+                                        {/* Step Number */}
+                                        <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-adhi-orange to-adhi-orange-dark text-white text-xl font-bold flex items-center justify-center mx-auto mb-6 shadow-lg shadow-adhi-orange/20 group-hover:scale-110 transition-transform duration-300">
+                                            {item.step}
+                                        </div>
+
+                                        {/* Icon */}
+                                        <div className="w-16 h-16 rounded-2xl bg-adhi-orange/10 border border-adhi-orange/10 flex items-center justify-center mx-auto mb-6 group-hover:bg-adhi-orange/15 transition-colors duration-300">
+                                            <item.icon size={28} className="text-adhi-orange" />
+                                        </div>
+
+                                        {/* Content */}
+                                        <h3 className="text-white font-bold text-xl mb-3 tracking-wide">{item.title}</h3>
+                                        <p className="text-adhi-gray-400 text-sm md:text-base leading-relaxed">{item.desc}</p>
+                                    </motion.div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>

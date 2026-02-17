@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
     Building2, Leaf, Globe, Handshake, Users, DollarSign, MapPin, CheckCircle2,
     Package, BarChart3, GraduationCap,
     Home, Link2, Shield, Rocket,
-    ArrowRight, ChevronRight, ChevronDown, ChevronUp,
+    ArrowRight, ChevronRight, ChevronDown, ChevronUp, ChevronLeft,
     Star, Quote, Minus, Plus,
-    BedDouble, Maximize, TrendingUp
+    BedDouble, Maximize, TrendingUp, X
 } from 'lucide-react';
 import {
     impactStats, platformCards, whyAdhiItems, featuredProjects,
@@ -85,10 +85,206 @@ function FAQItem({ item, index }) {
         </motion.div>
     );
 }
+// ===== PROJECT DETAIL MODAL =====
+function ProjectModal({ project, onClose }) {
+    const [currentImage, setCurrentImage] = useState(0);
+    const allImages = [project.image, ...(project.gallery || [])];
+    // Remove duplicates
+    const images = [...new Set(allImages)];
+
+    const nextImage = () => setCurrentImage((prev) => (prev + 1) % images.length);
+    const prevImage = () => setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
+
+    return (
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8"
+            onClick={onClose}
+        >
+            {/* Backdrop */}
+            <div className="absolute inset-0 bg-black/80 backdrop-blur-md" />
+
+            {/* Modal Content */}
+            <motion.div
+                initial={{ opacity: 0, scale: 0.92, y: 30 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.92, y: 30 }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
+                onClick={(e) => e.stopPropagation()}
+                className="relative w-full max-w-5xl max-h-[90vh] overflow-y-auto rounded-3xl border border-white/10 bg-adhi-dark-light/95 backdrop-blur-xl shadow-2xl"
+            >
+                {/* Close Button */}
+                <button
+                    onClick={onClose}
+                    className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition-colors"
+                >
+                    <X size={18} />
+                </button>
+
+                {/* Image Slider */}
+                <div className="relative h-[300px] md:h-[420px] overflow-hidden rounded-t-3xl">
+                    <AnimatePresence mode="wait">
+                        <motion.img
+                            key={currentImage}
+                            src={images[currentImage]}
+                            alt={`${project.name} - Image ${currentImage + 1}`}
+                            initial={{ opacity: 0, x: 50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -50 }}
+                            transition={{ duration: 0.3 }}
+                            className="w-full h-full object-cover"
+                        />
+                    </AnimatePresence>
+
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-adhi-dark-light via-transparent to-transparent" />
+
+                    {/* Navigation Arrows */}
+                    {images.length > 1 && (
+                        <>
+                            <button
+                                onClick={prevImage}
+                                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/40 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white hover:bg-black/60 transition-colors"
+                            >
+                                <ChevronLeft size={22} />
+                            </button>
+                            <button
+                                onClick={nextImage}
+                                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/40 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white hover:bg-black/60 transition-colors"
+                            >
+                                <ChevronRight size={22} />
+                            </button>
+                        </>
+                    )}
+
+                    {/* Image Counter */}
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2">
+                        {images.map((_, idx) => (
+                            <button
+                                key={idx}
+                                onClick={() => setCurrentImage(idx)}
+                                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${idx === currentImage
+                                    ? 'bg-adhi-orange w-8'
+                                    : 'bg-white/30 hover:bg-white/50'
+                                    }`}
+                            />
+                        ))}
+                    </div>
+
+                    {/* Status Badge */}
+                    <div className="absolute top-4 left-4">
+                        <span className={`px-3 py-1.5 rounded-xl text-sm font-semibold ${statusColors[project.status] || 'bg-adhi-gray-700 text-adhi-gray-300'}`}>
+                            {project.status}
+                        </span>
+                    </div>
+                </div>
+
+                {/* Thumbnail Strip */}
+                {images.length > 1 && (
+                    <div className="flex gap-2 px-8 -mt-6 relative z-10">
+                        {images.map((img, idx) => (
+                            <button
+                                key={idx}
+                                onClick={() => setCurrentImage(idx)}
+                                className={`w-16 h-12 md:w-20 md:h-14 rounded-xl overflow-hidden border-2 transition-all duration-300 flex-shrink-0 ${idx === currentImage
+                                    ? 'border-adhi-orange shadow-lg shadow-adhi-orange/20'
+                                    : 'border-transparent opacity-50 hover:opacity-80'
+                                    }`}
+                            >
+                                <img src={img} alt="" className="w-full h-full object-cover" />
+                            </button>
+                        ))}
+                    </div>
+                )}
+
+                {/* Project Details */}
+                <div className="p-8 md:p-10">
+                    {/* Title & Location */}
+                    <div className="mb-6">
+                        <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white mb-2 tracking-wide">
+                            {project.name}
+                        </h2>
+                        <p className="text-adhi-gray-400 text-base flex items-center gap-2">
+                            <MapPin size={16} className="text-adhi-orange" />
+                            {project.location}
+                        </p>
+                    </div>
+
+                    {/* Description */}
+                    <p className="text-adhi-gray-300 text-base md:text-lg leading-relaxed mb-8">
+                        {project.description}
+                    </p>
+
+                    {/* Stats Grid */}
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                        {[
+                            { label: 'Total Units', value: `${project.units}`, icon: Building2 },
+                            { label: 'Bedrooms', value: project.bedrooms, icon: BedDouble },
+                            { label: 'Area', value: project.area, icon: Maximize },
+                            { label: 'Starting', value: project.price, icon: DollarSign },
+                        ].map((stat, idx) => (
+                            <div key={idx} className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-5 text-center">
+                                <stat.icon size={22} className="text-adhi-orange mx-auto mb-3" />
+                                <div className="text-white font-bold text-lg mb-1">{stat.value}</div>
+                                <div className="text-adhi-gray-500 text-xs uppercase tracking-wider">{stat.label}</div>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Progress Bar */}
+                    <div className="mb-8">
+                        <div className="flex items-center justify-between mb-3">
+                            <span className="text-white font-semibold text-base">Construction Progress</span>
+                            <span className="text-adhi-orange font-bold text-lg">{project.completion}%</span>
+                        </div>
+                        <div className="h-3 bg-adhi-gray-800 rounded-full overflow-hidden">
+                            <motion.div
+                                initial={{ width: 0 }}
+                                animate={{ width: `${project.completion}%` }}
+                                transition={{ duration: 1.2, delay: 0.3 }}
+                                className="h-full rounded-full bg-gradient-to-r from-adhi-orange to-adhi-orange-light"
+                            />
+                        </div>
+                    </div>
+
+                    {/* Features */}
+                    <div>
+                        <h3 className="text-white font-bold text-lg mb-4">Project Features</h3>
+                        <div className="flex flex-wrap gap-2">
+                            {project.features.map((feature) => (
+                                <span
+                                    key={feature}
+                                    className="px-4 py-2 rounded-xl bg-adhi-orange/5 border border-adhi-orange/10 text-adhi-gray-300 text-sm font-medium flex items-center gap-2"
+                                >
+                                    <CheckCircle2 size={14} className="text-adhi-orange" />
+                                    {feature}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </motion.div>
+        </motion.div>
+    );
+}
 
 export default function Homepage() {
+    const [selectedProject, setSelectedProject] = useState(null);
+
     return (
         <>
+            {/* Project Modal */}
+            <AnimatePresence>
+                {selectedProject && (
+                    <ProjectModal
+                        project={selectedProject}
+                        onClose={() => setSelectedProject(null)}
+                    />
+                )}
+            </AnimatePresence>
+
             {/* ===== HERO ===== */}
             <section id="hero" className="relative min-h-[calc(100vh-80px)] flex items-center overflow-hidden">
                 <div className="absolute inset-0">
@@ -348,7 +544,8 @@ export default function Homepage() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                                className="glass-card overflow-hidden group"
+                                className="glass-card overflow-hidden group cursor-pointer"
+                                onClick={() => setSelectedProject(project)}
                             >
                                 {/* Project Image */}
                                 <div className="h-48 relative overflow-hidden">
