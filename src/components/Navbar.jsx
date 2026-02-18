@@ -39,7 +39,7 @@ export default function Navbar() {
                 {/* Logo */}
                 <Link to="/" className="flex items-center group">
                     <img
-                        src="/Logo.png"
+                        src="/adhi-logo.png"
                         alt="ADHI Logo"
                         className="h-14 w-auto object-contain transition-all duration-300 group-hover:scale-105"
                     />

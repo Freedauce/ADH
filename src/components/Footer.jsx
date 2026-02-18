@@ -76,7 +76,7 @@ export default function Footer() {
                     <div className="col-span-2">
                         <Link to="/" className="flex items-center mb-5">
                             <img
-                                src="/Logo.png"
+                                src="/adhi-logo.png"
                                 alt="ADHI Logo"
                                 className="h-14 w-auto object-contain"
                             />
