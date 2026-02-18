@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Building2, Leaf, GraduationCap, BarChart3, Home, Phone, ChevronDown, Newspaper } from 'lucide-react';
+import { Menu, X, Building2, Leaf, GraduationCap, BarChart3, Home, Phone, ChevronDown, Newspaper, Shield } from 'lucide-react';
 
 const navLinks = [
     { label: 'Home', path: '/', icon: Home, description: 'Overview & mission' },
     { label: 'Procurement', path: '/procurement', icon: Building2, description: 'Digital procurement hub' },
     { label: 'Carbon', path: '/carbon', icon: Leaf, description: 'Sustainability dashboard' },
-    { label: 'Franchise', path: '/franchise', icon: GraduationCap, description: 'Training & expansion' },
+    { label: 'Franchise', path: '/franchise', icon: Shield, description: 'Business expansion' },
+    { label: 'Academy', path: '/academy', icon: GraduationCap, description: 'Training & certification' },
     { label: 'News', path: '/news', icon: Newspaper, description: 'Latest updates' },
     { label: 'Investor', path: '/investor', icon: BarChart3, description: 'Financial metrics' },
 ];

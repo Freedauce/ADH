@@ -1,8 +1,12 @@
 import { motion } from 'framer-motion';
 import {
+    AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip,
+    ResponsiveContainer
+} from 'recharts';
+import {
     ArrowRight, CheckCircle2, Clock, Send, FileText, Truck, MapPin,
     Package, Search, Filter, TrendingUp, Star, ShoppingCart, BarChart3,
-    Shield, Globe, Zap, Eye
+    Shield, Globe, Zap, Eye, AlertTriangle, RefreshCw
 } from 'lucide-react';
 import PageHeader from '../components/PageHeader';
 import { procurementOrders, procurementFlowSteps, materialCategories, supplierPerformance } from '../data/mockData';
@@ -27,6 +31,46 @@ const procurementStats = [
     { label: 'On-Time Rate', value: '94%', icon: Clock, change: '+2% vs last quarter' },
     { label: 'Cost Savings', value: '28%', icon: TrendingUp, change: 'vs traditional procurement' },
 ];
+
+/* Supply Chain Chart Data */
+const supplyChainData = [
+    { material: 'Steel', rfq: 480, orders: 520, delivery: 450 },
+    { material: 'Cement', rfq: 750, orders: 820, delivery: 680 },
+    { material: 'Glass', rfq: 320, orders: 280, delivery: 250 },
+    { material: 'Timber', rfq: 590, orders: 540, delivery: 510 },
+];
+
+/* Active Vendors Data */
+const activeVendors = [
+    { name: 'Global Steel Co.', type: 'Structural', contract: '#CON-101', status: 'Active', statusColor: 'bg-green-100 text-green-700', value: '$1.2M' },
+    { name: 'EcoCement Ltd', type: 'Foundation', contract: '#CON-102', status: 'In Review', statusColor: 'bg-yellow-100 text-yellow-700', value: '$840K' },
+    { name: 'TimberWorks Africa', type: 'Framing', contract: '#CON-103', status: 'Active', statusColor: 'bg-green-100 text-green-700', value: '$620K' },
+    { name: 'GlassTech Rwanda', type: 'Windows', contract: '#CON-104', status: 'Pending', statusColor: 'bg-blue-100 text-blue-700', value: '$380K' },
+    { name: 'SafeWire Electric', type: 'Electrical', contract: '#CON-105', status: 'Active', statusColor: 'bg-green-100 text-green-700', value: '$510K' },
+];
+
+/* Inventory Alerts */
+const lowStockAlerts = [
+    { item: 'Window Frames (M-Type)', level: 20 },
+    { item: 'Electrical Conduit 25mm', level: 15 },
+    { item: 'Roof Insulation Panels', level: 28 },
+];
+
+const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+        return (
+            <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-4">
+                <p className="text-sm font-semibold text-gray-900 mb-2">{label}</p>
+                {payload.map((entry, i) => (
+                    <p key={i} className="text-xs" style={{ color: entry.color }}>
+                        {entry.name}: <span className="font-bold">{entry.value}</span>
+                    </p>
+                ))}
+            </div>
+        );
+    }
+    return null;
+};
 
 export default function ProcurementHub() {
     return (
@@ -63,6 +107,149 @@ export default function ProcurementHub() {
                                 </motion.div>
                             );
                         })}
+                    </div>
+                </div>
+            </section>
+
+            {/* ===== SUPPLY CHAIN CONTROL CHART ===== */}
+            <section id="supply-chain-chart" className="py-12 md:py-16">
+                <div className="max-w-7xl mx-auto px-6">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="glass-card p-6 md:p-8"
+                    >
+                        <div className="mb-6">
+                            <h3 className="text-xl font-bold text-gray-900">Supply Chain Control</h3>
+                            <p className="text-sm text-gray-500">Tracking RFQ to Delivery pipeline</p>
+                        </div>
+                        <ResponsiveContainer width="100%" height={320}>
+                            <AreaChart data={supplyChainData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+                                <defs>
+                                    <linearGradient id="rfqGrad" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="5%" stopColor="#6366f1" stopOpacity={0.15} />
+                                        <stop offset="95%" stopColor="#6366f1" stopOpacity={0} />
+                                    </linearGradient>
+                                    <linearGradient id="ordersGrad" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="5%" stopColor="#14b8a6" stopOpacity={0.15} />
+                                        <stop offset="95%" stopColor="#14b8a6" stopOpacity={0} />
+                                    </linearGradient>
+                                    <linearGradient id="deliveryGrad" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="5%" stopColor="#FF6A00" stopOpacity={0.15} />
+                                        <stop offset="95%" stopColor="#FF6A00" stopOpacity={0} />
+                                    </linearGradient>
+                                </defs>
+                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" />
+                                <XAxis dataKey="material" tick={{ fontSize: 12, fill: '#6B7280' }} />
+                                <YAxis tick={{ fontSize: 12, fill: '#6B7280' }} />
+                                <Tooltip content={<CustomTooltip />} />
+                                <Area type="monotone" dataKey="rfq" name="RFQ Sent" stroke="#6366f1" fill="url(#rfqGrad)" strokeWidth={2} dot={{ r: 4, fill: '#fff', stroke: '#6366f1', strokeWidth: 2 }} />
+                                <Area type="monotone" dataKey="orders" name="Orders Placed" stroke="#14b8a6" fill="url(#ordersGrad)" strokeWidth={2} dot={{ r: 4, fill: '#fff', stroke: '#14b8a6', strokeWidth: 2 }} />
+                                <Area type="monotone" dataKey="delivery" name="Delivered" stroke="#FF6A00" fill="url(#deliveryGrad)" strokeWidth={2} dot={{ r: 4, fill: '#fff', stroke: '#FF6A00', strokeWidth: 2 }} />
+                            </AreaChart>
+                        </ResponsiveContainer>
+                        <div className="flex items-center gap-6 mt-4 justify-center">
+                            <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-indigo-500" /><span className="text-xs text-gray-500">RFQ Sent</span></div>
+                            <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-teal-500" /><span className="text-xs text-gray-500">Orders Placed</span></div>
+                            <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-adhi-orange" /><span className="text-xs text-gray-500">Delivered</span></div>
+                        </div>
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* ===== ACTIVE VENDORS + INVENTORY ===== */}
+            <section id="vendors-inventory" className="py-12 md:py-16 bg-gray-50">
+                <div className="max-w-7xl mx-auto px-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+                        {/* Active Vendors Table */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6 }}
+                            className="lg:col-span-3 glass-card p-6 md:p-8"
+                        >
+                            <h3 className="text-xl font-bold text-gray-900 mb-6">Active Vendors</h3>
+                            <div className="overflow-x-auto">
+                                <table className="w-full">
+                                    <thead>
+                                        <tr className="border-b border-gray-200">
+                                            <th className="text-left text-[10px] font-semibold text-gray-400 uppercase tracking-wider pb-3">Vendor</th>
+                                            <th className="text-left text-[10px] font-semibold text-gray-400 uppercase tracking-wider pb-3">Contract</th>
+                                            <th className="text-left text-[10px] font-semibold text-gray-400 uppercase tracking-wider pb-3">Status</th>
+                                            <th className="text-right text-[10px] font-semibold text-gray-400 uppercase tracking-wider pb-3">Value</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {activeVendors.map((vendor, i) => (
+                                            <tr key={i} className="border-b border-gray-100 last:border-0 hover:bg-gray-50 transition-colors">
+                                                <td className="py-4">
+                                                    <div className="text-sm font-semibold text-gray-900">{vendor.name}</div>
+                                                    <div className="text-xs text-gray-400">{vendor.type}</div>
+                                                </td>
+                                                <td className="py-4 text-sm text-gray-500 font-mono">{vendor.contract}</td>
+                                                <td className="py-4">
+                                                    <span className={`text-[10px] font-semibold px-2.5 py-1 rounded-full ${vendor.statusColor}`}>
+                                                        {vendor.status}
+                                                    </span>
+                                                </td>
+                                                <td className="py-4 text-sm font-semibold text-gray-900 text-right">{vendor.value}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </motion.div>
+
+                        {/* Inventory Management */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.1 }}
+                            className="lg:col-span-2 glass-card p-6 md:p-8"
+                        >
+                            <h3 className="text-xl font-bold text-gray-900 mb-6">Inventory Management</h3>
+
+                            {/* In-Stock Rate */}
+                            <div className="flex items-center gap-4 mb-6 p-4 bg-gray-50 rounded-xl">
+                                <div className="w-12 h-12 rounded-xl bg-teal-100 flex items-center justify-center">
+                                    <RefreshCw size={20} className="text-teal-600" />
+                                </div>
+                                <div className="flex-1">
+                                    <div className="text-xs text-gray-500 font-medium">In-Stock Rate</div>
+                                    <div className="text-3xl font-bold text-gray-900">94.2%</div>
+                                </div>
+                                <div className="text-right">
+                                    <div className="text-sm font-semibold text-green-600">+2.4%</div>
+                                    <div className="text-[10px] text-gray-400">vs last month</div>
+                                </div>
+                            </div>
+
+                            {/* Low Stock Alerts */}
+                            <div className="mb-3">
+                                <h4 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Low Stock Alerts</h4>
+                            </div>
+                            <div className="space-y-3">
+                                {lowStockAlerts.map((alert, i) => (
+                                    <div key={i} className="flex items-center justify-between p-3 bg-red-50 rounded-xl border border-red-100">
+                                        <div className="flex items-center gap-3">
+                                            <AlertTriangle size={14} className="text-red-500" />
+                                            <span className="text-sm text-gray-700">{alert.item}</span>
+                                        </div>
+                                        <span className="text-sm font-bold text-red-600">{alert.level}%</span>
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* System Status */}
+                            <div className="flex items-center gap-2 mt-6 pt-4 border-t border-gray-200">
+                                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                                <span className="text-xs text-gray-500">System operational</span>
+                            </div>
+                        </motion.div>
                     </div>
                 </div>
             </section>

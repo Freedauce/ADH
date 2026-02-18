@@ -29,9 +29,9 @@ export default function FranchisePlatform() {
     return (
         <>
             <PageHeader
-                label="Franchise & Training"
-                title="Franchise & Training Platform"
-                subtitle="Scalable franchising and builder certification for continent-wide expansion. Standardized kits, comprehensive training, and quality-controlled operations."
+                label="Business Expansion"
+                title="Franchise Platform"
+                subtitle="Join Africa's most innovative construction franchise. Scalable delivery methodology, quality-controlled kits, and continent-wide expansion opportunities."
             />
 
             {/* ===== FRANCHISE STATS ===== */}
@@ -160,94 +160,21 @@ export default function FranchisePlatform() {
                             ))}
                         </motion.div>
 
-                        {/* Certification Badge */}
+                        {/* Partnership Section (Replacing redundant certification badge) */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.1 }}
-                            className="glass-card p-8 flex flex-col items-center justify-center text-center"
+                            className="glass-card p-8 flex flex-col items-center justify-center text-center bg-indigo-600 !text-white"
                         >
-                            <div className="w-32 h-32 rounded-full border-4 border-adhi-orange/30 flex items-center justify-center mb-6 relative animate-pulse-glow">
-                                <div className="w-24 h-24 rounded-full bg-gradient-to-br from-adhi-orange/20 to-adhi-orange/5 flex items-center justify-center">
-                                    <Award size={40} className="text-adhi-orange" />
-                                </div>
-                                <div className="absolute -top-1 -right-1 w-8 h-8 rounded-full bg-adhi-orange flex items-center justify-center">
-                                    <CheckCircle2 size={16} className="text-gray-900" />
-                                </div>
-                            </div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-2">Certified ADHI Builder</h3>
-                            <p className="text-gray-500 text-sm mb-4">Industry-recognized construction certification</p>
-                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-adhi-orange/10 border border-adhi-orange/20 rounded-full mb-4">
-                                <div className="w-2 h-2 rounded-full bg-adhi-orange" />
-                                <span className="text-adhi-orange text-xs font-semibold uppercase tracking-wider">Verified</span>
-                            </div>
-                            <div className="text-gray-500 text-xs leading-relaxed max-w-xs">
-                                Complete all 6 training modules, pass quality assessments, and demonstrate competency to earn ADHI Builder Certification.
-                            </div>
-                            <p className="text-adhi-gray-600 text-xs italic mt-6">Static badge – Phase 1 Demo</p>
+                            <Building2 size={48} className="text-indigo-200 mb-6" />
+                            <h3 className="text-xl font-bold mb-2">Build Your Legacy</h3>
+                            <p className="text-indigo-100 text-sm mb-6">Join our network of regional developers and transform the African housing market.</p>
+                            <button className="bg-white text-indigo-600 px-8 py-3.5 rounded-xl font-bold text-sm hover:bg-gray-50 transition-colors shadow-lg">
+                                Download Prospectus
+                            </button>
                         </motion.div>
-                    </div>
-
-                    {/* ===== TRAINING MODULES ===== */}
-                    <div className="mb-12">
-                        <div className="flex items-center gap-3 mb-6">
-                            <BookOpen size={22} className="text-adhi-orange" />
-                            <div>
-                                <h2 className="text-2xl font-bold text-gray-900">Training Modules</h2>
-                                <p className="text-gray-500 text-sm">6 comprehensive modules • 90 total hours</p>
-                            </div>
-                        </div>
-                        <div className="space-y-4">
-                            {trainingModules.map((mod, i) => {
-                                const c = statusCfg[mod.status];
-                                return (
-                                    <motion.div
-                                        key={mod.id}
-                                        initial={{ opacity: 0, x: -20 }}
-                                        whileInView={{ opacity: 1, x: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.5, delay: i * 0.08 }}
-                                        className="glass-card p-5 md:p-6"
-                                    >
-                                        <div className="flex flex-col md:flex-row md:items-center gap-4">
-                                            <div className="flex items-center gap-4 flex-1">
-                                                <div className={`w-10 h-10 rounded-xl ${c.bg} flex items-center justify-center flex-shrink-0`}>
-                                                    <c.Icon size={18} className={c.color} />
-                                                </div>
-                                                <div className="flex-1 min-w-0">
-                                                    <div className="flex items-center gap-2 mb-1">
-                                                        <h3 className="text-gray-900 font-medium text-sm">{mod.title}</h3>
-                                                        <span className="text-gray-400 text-[10px] flex-shrink-0">{mod.hours}h</span>
-                                                    </div>
-                                                    <p className="text-gray-400 text-xs leading-relaxed">{mod.description}</p>
-                                                    <span className={`text-xs font-medium ${c.color} mt-1 inline-block`}>{mod.status}</span>
-                                                </div>
-                                            </div>
-                                            <div className="flex items-center gap-3 md:w-64">
-                                                <div className="flex-1 h-2.5 bg-gray-100 rounded-full overflow-hidden">
-                                                    <motion.div
-                                                        initial={{ width: 0 }}
-                                                        whileInView={{ width: `${mod.progress}%` }}
-                                                        viewport={{ once: true }}
-                                                        transition={{ duration: 1, delay: 0.3 + i * 0.1 }}
-                                                        className="h-full rounded-full"
-                                                        style={{
-                                                            background: mod.progress === 100
-                                                                ? 'linear-gradient(90deg, #22c55e, #16a34a)'
-                                                                : mod.progress > 0
-                                                                    ? 'linear-gradient(90deg, #FF6A00, #CC5500)'
-                                                                    : '#3A3A3A'
-                                                        }}
-                                                    />
-                                                </div>
-                                                <span className="text-xs text-gray-500 font-medium w-10 text-right">{mod.progress}%</span>
-                                            </div>
-                                        </div>
-                                    </motion.div>
-                                );
-                            })}
-                        </div>
                     </div>
 
                     {/* ===== HOUSE KITS ===== */}
@@ -319,26 +246,24 @@ export default function FranchisePlatform() {
                             transition={{ duration: 0.6 }}
                             className="text-center mb-16"
                         >
-                            <span className="section-label">Get Started</span>
+                            <span className="section-label">Partnership</span>
                             <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mt-5 mb-5 tracking-wide">
-                                How to Become an <span className="gradient-text">ADHI Franchise Partner</span>
+                                Join the <span className="gradient-text">ADHI Network</span>
                             </h2>
                             <p className="text-gray-500 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-                                Four simple steps to join Africa's fastest-growing housing construction network.
+                                Scalable opportunities for regional developers and construction firms.
                             </p>
                         </motion.div>
 
                         {/* Steps Grid */}
                         <div className="relative">
-                            {/* Connecting line (desktop only) */}
                             <div className="hidden lg:block absolute top-[72px] left-[12%] right-[12%] h-[2px] bg-gradient-to-r from-adhi-orange/0 via-adhi-orange/30 to-adhi-orange/0" />
-
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
                                 {[
-                                    { step: 1, title: 'Apply', desc: 'Submit your franchise application with details on your construction experience, market, and business plan.', icon: GraduationCap },
-                                    { step: 2, title: 'Train', desc: 'Complete 6 training modules covering ADHI methodology, procurement, quality assurance, and project management.', icon: BookOpen },
-                                    { step: 3, title: 'Certify', desc: 'Pass quality assessments to earn ADHI Builder Certification. Receive your franchise license and house kits.', icon: Award },
-                                    { step: 4, title: 'Build', desc: 'Begin construction using ADHI standardized kits, digital procurement, and ongoing support from headquarters.', icon: Zap },
+                                    { step: 1, title: 'Evaluation', desc: 'Regional market analysis and business feasibility assessment.', icon: Globe },
+                                    { step: 2, title: 'Contracting', desc: 'Standardized franchise agreements and operational bonding.', icon: Award },
+                                    { step: 3, title: 'Training', desc: 'Staff certification through the ADHI Academy platform.', icon: GraduationCap },
+                                    { step: 4, title: 'Mobilization', desc: 'House kit delivery and first project groundbreaking.', icon: Zap },
                                 ].map((item, i) => (
                                     <motion.div
                                         key={item.step}
@@ -348,17 +273,12 @@ export default function FranchisePlatform() {
                                         transition={{ duration: 0.6, delay: i * 0.12 }}
                                         className="relative rounded-2xl border border-gray-200 bg-gray-50 hover:bg-gray-100 hover:border-adhi-orange/20 transition-all duration-400 p-8 text-center group"
                                     >
-                                        {/* Step Number */}
-                                        <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-adhi-orange to-adhi-orange-dark text-gray-900 text-xl font-bold flex items-center justify-center mx-auto mb-6 shadow-lg shadow-adhi-orange/20 group-hover:scale-110 transition-transform duration-300">
+                                        <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-adhi-orange to-adhi-orange-dark text-white text-xl font-bold flex items-center justify-center mx-auto mb-6 shadow-lg shadow-adhi-orange/20 group-hover:scale-110 transition-transform duration-300">
                                             {item.step}
                                         </div>
-
-                                        {/* Icon */}
                                         <div className="w-16 h-16 rounded-2xl bg-adhi-orange/10 border border-adhi-orange/10 flex items-center justify-center mx-auto mb-6 group-hover:bg-adhi-orange/15 transition-colors duration-300">
                                             <item.icon size={28} className="text-adhi-orange" />
                                         </div>
-
-                                        {/* Content */}
                                         <h3 className="text-gray-900 font-bold text-xl mb-3 tracking-wide">{item.title}</h3>
                                         <p className="text-gray-500 text-sm md:text-base leading-relaxed">{item.desc}</p>
                                     </motion.div>
