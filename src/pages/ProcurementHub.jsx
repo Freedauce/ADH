@@ -8,7 +8,7 @@ import PageHeader from '../components/PageHeader';
 import { procurementOrders, procurementFlowSteps, materialCategories, supplierPerformance } from '../data/mockData';
 
 const statusConfig = {
-    Draft: { color: 'bg-adhi-gray-600 text-adhi-gray-300', icon: FileText },
+    Draft: { color: 'bg-adhi-gray-600 text-gray-600', icon: FileText },
     Sent: { color: 'bg-blue-500/20 text-blue-400', icon: Send },
     Confirmed: { color: 'bg-adhi-orange/20 text-adhi-orange', icon: CheckCircle2 },
     Shipped: { color: 'bg-green-500/20 text-green-400', icon: Truck },
@@ -58,8 +58,8 @@ export default function ProcurementHub() {
                                         </div>
                                     </div>
                                     <div className="text-2xl md:text-3xl font-bold gradient-text mb-1">{stat.value}</div>
-                                    <div className="text-white text-xs font-medium mb-0.5">{stat.label}</div>
-                                    <div className="text-adhi-gray-500 text-[10px]">{stat.change}</div>
+                                    <div className="text-gray-900 text-xs font-medium mb-0.5">{stat.label}</div>
+                                    <div className="text-gray-400 text-[10px]">{stat.change}</div>
                                 </motion.div>
                             );
                         })}
@@ -68,7 +68,7 @@ export default function ProcurementHub() {
             </section>
 
             {/* ===== MATERIAL CATEGORIES ===== */}
-            <section id="material-categories" className="py-12 md:py-16 bg-adhi-dark/30">
+            <section id="material-categories" className="py-12 md:py-16 bg-gray-50">
                 <div className="max-w-7xl mx-auto px-6">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -77,8 +77,8 @@ export default function ProcurementHub() {
                         transition={{ duration: 0.6 }}
                         className="mb-8"
                     >
-                        <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">Material Categories</h2>
-                        <p className="text-adhi-gray-400 text-sm">Browse our standardized catalogue of construction materials</p>
+                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Material Categories</h2>
+                        <p className="text-gray-500 text-sm">Browse our standardized catalogue of construction materials</p>
                     </motion.div>
 
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -94,18 +94,18 @@ export default function ProcurementHub() {
                                 <div className="w-10 h-10 rounded-xl bg-adhi-orange/10 flex items-center justify-center mb-4 group-hover:bg-adhi-orange/20 transition-colors">
                                     <Package size={18} className="text-adhi-orange" />
                                 </div>
-                                <h3 className="text-white font-semibold text-sm mb-1">{cat.name}</h3>
+                                <h3 className="text-gray-900 font-semibold text-sm mb-1">{cat.name}</h3>
                                 <div className="space-y-1 mt-3">
                                     <div className="flex justify-between text-xs">
-                                        <span className="text-adhi-gray-500">Items</span>
-                                        <span className="text-adhi-gray-300">{cat.items}</span>
+                                        <span className="text-gray-400">Items</span>
+                                        <span className="text-gray-600">{cat.items}</span>
                                     </div>
                                     <div className="flex justify-between text-xs">
-                                        <span className="text-adhi-gray-500">Suppliers</span>
-                                        <span className="text-adhi-gray-300">{cat.suppliers}</span>
+                                        <span className="text-gray-400">Suppliers</span>
+                                        <span className="text-gray-600">{cat.suppliers}</span>
                                     </div>
                                     <div className="flex justify-between text-xs">
-                                        <span className="text-adhi-gray-500">Total Value</span>
+                                        <span className="text-gray-400">Total Value</span>
                                         <span className="text-adhi-orange font-medium">{cat.totalValue}</span>
                                     </div>
                                 </div>
@@ -126,16 +126,16 @@ export default function ProcurementHub() {
                         className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4"
                     >
                         <div>
-                            <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">Procurement Orders</h2>
-                            <p className="text-adhi-gray-400 text-sm">Active RFQ and Purchase Order tracking across all projects</p>
+                            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Procurement Orders</h2>
+                            <p className="text-gray-500 text-sm">Active RFQ and Purchase Order tracking across all projects</p>
                         </div>
                         <div className="flex items-center gap-3">
-                            <div className="flex items-center gap-2 px-4 py-2.5 bg-adhi-gray-800 border border-white/10 rounded-xl text-sm">
-                                <Search size={14} className="text-adhi-gray-500" />
-                                <span className="text-adhi-gray-500 text-xs">Search orders...</span>
+                            <div className="flex items-center gap-2 px-4 py-2.5 bg-gray-100 border border-gray-200 rounded-xl text-sm">
+                                <Search size={14} className="text-gray-400" />
+                                <span className="text-gray-400 text-xs">Search orders...</span>
                             </div>
-                            <div className="flex items-center gap-2 px-3 py-2.5 bg-adhi-gray-800 border border-white/10 rounded-xl">
-                                <Filter size={14} className="text-adhi-gray-500" />
+                            <div className="flex items-center gap-2 px-3 py-2.5 bg-gray-100 border border-gray-200 rounded-xl">
+                                <Filter size={14} className="text-gray-400" />
                             </div>
                         </div>
                     </motion.div>
@@ -151,15 +151,15 @@ export default function ProcurementHub() {
                         <div className="overflow-x-auto">
                             <table className="w-full">
                                 <thead>
-                                    <tr className="border-b border-white/5">
-                                        <th className="text-left px-6 py-4 text-xs font-semibold text-adhi-gray-400 uppercase tracking-wider">Supplier</th>
-                                        <th className="text-left px-6 py-4 text-xs font-semibold text-adhi-gray-400 uppercase tracking-wider">Product SKU</th>
-                                        <th className="text-left px-6 py-4 text-xs font-semibold text-adhi-gray-400 uppercase tracking-wider">Project</th>
-                                        <th className="text-left px-6 py-4 text-xs font-semibold text-adhi-gray-400 uppercase tracking-wider">Country</th>
-                                        <th className="text-left px-6 py-4 text-xs font-semibold text-adhi-gray-400 uppercase tracking-wider">RFQ/PO Ref</th>
-                                        <th className="text-left px-6 py-4 text-xs font-semibold text-adhi-gray-400 uppercase tracking-wider">Value</th>
-                                        <th className="text-left px-6 py-4 text-xs font-semibold text-adhi-gray-400 uppercase tracking-wider">Status</th>
-                                        <th className="text-left px-6 py-4 text-xs font-semibold text-adhi-gray-400 uppercase tracking-wider">Est. Delivery</th>
+                                    <tr className="border-b border-gray-200">
+                                        <th className="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Supplier</th>
+                                        <th className="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Product SKU</th>
+                                        <th className="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Project</th>
+                                        <th className="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Country</th>
+                                        <th className="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">RFQ/PO Ref</th>
+                                        <th className="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Value</th>
+                                        <th className="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
+                                        <th className="text-left px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Est. Delivery</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -169,13 +169,13 @@ export default function ProcurementHub() {
                                         return (
                                             <tr
                                                 key={order.id}
-                                                className={`border-b border-white/5 hover:bg-white/[0.02] transition-colors ${i === procurementOrders.length - 1 ? 'border-b-0' : ''}`}
+                                                className={`border-b border-gray-200 hover:bg-gray-50 transition-colors ${i === procurementOrders.length - 1 ? 'border-b-0' : ''}`}
                                             >
-                                                <td className="px-6 py-4 text-sm text-white font-medium">{order.supplier}</td>
-                                                <td className="px-6 py-4 text-sm text-adhi-gray-300">{order.sku}</td>
-                                                <td className="px-6 py-4 text-sm text-adhi-gray-300">{order.project}</td>
-                                                <td className="px-6 py-4 text-sm text-adhi-gray-400">{order.country}</td>
-                                                <td className="px-6 py-4 text-sm text-adhi-gray-400 font-mono text-xs">{order.rfqRef}</td>
+                                                <td className="px-6 py-4 text-sm text-gray-900 font-medium">{order.supplier}</td>
+                                                <td className="px-6 py-4 text-sm text-gray-600">{order.sku}</td>
+                                                <td className="px-6 py-4 text-sm text-gray-600">{order.project}</td>
+                                                <td className="px-6 py-4 text-sm text-gray-500">{order.country}</td>
+                                                <td className="px-6 py-4 text-sm text-gray-500 font-mono text-xs">{order.rfqRef}</td>
                                                 <td className="px-6 py-4 text-sm text-adhi-orange font-medium">{order.value}</td>
                                                 <td className="px-6 py-4">
                                                     <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium ${statusStyle.color}`}>
@@ -183,15 +183,15 @@ export default function ProcurementHub() {
                                                         {order.status}
                                                     </span>
                                                 </td>
-                                                <td className="px-6 py-4 text-sm text-adhi-gray-400">{order.delivery}</td>
+                                                <td className="px-6 py-4 text-sm text-gray-500">{order.delivery}</td>
                                             </tr>
                                         );
                                     })}
                                 </tbody>
                             </table>
                         </div>
-                        <div className="px-6 py-4 border-t border-white/5 flex items-center justify-between">
-                            <span className="text-adhi-gray-500 text-xs">Showing {procurementOrders.length} of {procurementOrders.length} orders</span>
+                        <div className="px-6 py-4 border-t border-gray-200 flex items-center justify-between">
+                            <span className="text-gray-400 text-xs">Showing {procurementOrders.length} of {procurementOrders.length} orders</span>
                             <span className="text-adhi-gray-600 text-xs italic">Illustrative – Phase 1 Mock Data</span>
                         </div>
                     </motion.div>
@@ -211,19 +211,19 @@ export default function ProcurementHub() {
                                     className="glass-card p-5"
                                 >
                                     <div className="flex items-start justify-between mb-3">
-                                        <h3 className="text-sm font-semibold text-white flex-1 pr-3">{order.supplier}</h3>
+                                        <h3 className="text-sm font-semibold text-gray-900 flex-1 pr-3">{order.supplier}</h3>
                                         <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium flex-shrink-0 ${statusStyle.color}`}>
                                             <StatusIcon size={11} />
                                             {order.status}
                                         </span>
                                     </div>
                                     <div className="space-y-2 text-xs">
-                                        <div className="flex justify-between"><span className="text-adhi-gray-500">SKU</span><span className="text-adhi-gray-300 text-right">{order.sku}</span></div>
-                                        <div className="flex justify-between"><span className="text-adhi-gray-500">Project</span><span className="text-adhi-gray-300">{order.project}</span></div>
-                                        <div className="flex justify-between"><span className="text-adhi-gray-500">Country</span><span className="text-adhi-gray-300">{order.country}</span></div>
-                                        <div className="flex justify-between"><span className="text-adhi-gray-500">Value</span><span className="text-adhi-orange font-medium">{order.value}</span></div>
-                                        <div className="flex justify-between"><span className="text-adhi-gray-500">Reference</span><span className="text-adhi-gray-400 font-mono">{order.rfqRef}</span></div>
-                                        <div className="flex justify-between"><span className="text-adhi-gray-500">Delivery</span><span className="text-adhi-gray-300">{order.delivery}</span></div>
+                                        <div className="flex justify-between"><span className="text-gray-400">SKU</span><span className="text-gray-600 text-right">{order.sku}</span></div>
+                                        <div className="flex justify-between"><span className="text-gray-400">Project</span><span className="text-gray-600">{order.project}</span></div>
+                                        <div className="flex justify-between"><span className="text-gray-400">Country</span><span className="text-gray-600">{order.country}</span></div>
+                                        <div className="flex justify-between"><span className="text-gray-400">Value</span><span className="text-adhi-orange font-medium">{order.value}</span></div>
+                                        <div className="flex justify-between"><span className="text-gray-400">Reference</span><span className="text-gray-500 font-mono">{order.rfqRef}</span></div>
+                                        <div className="flex justify-between"><span className="text-gray-400">Delivery</span><span className="text-gray-600">{order.delivery}</span></div>
                                     </div>
                                 </motion.div>
                             );
@@ -233,7 +233,7 @@ export default function ProcurementHub() {
             </section>
 
             {/* ===== SUPPLIER PERFORMANCE ===== */}
-            <section id="supplier-performance" className="py-16 md:py-24 bg-adhi-dark/30">
+            <section id="supplier-performance" className="py-16 md:py-24 bg-gray-50">
                 <div className="max-w-7xl mx-auto px-6">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -242,8 +242,8 @@ export default function ProcurementHub() {
                         transition={{ duration: 0.6 }}
                         className="mb-8"
                     >
-                        <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">Top Supplier Performance</h2>
-                        <p className="text-adhi-gray-400 text-sm">Verified supplier ratings and delivery metrics</p>
+                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Top Supplier Performance</h2>
+                        <p className="text-gray-500 text-sm">Verified supplier ratings and delivery metrics</p>
                     </motion.div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -258,8 +258,8 @@ export default function ProcurementHub() {
                             >
                                 <div className="flex items-center justify-between mb-4">
                                     <div>
-                                        <h3 className="text-white font-semibold text-sm">{supplier.name}</h3>
-                                        <p className="text-adhi-gray-500 text-xs mt-0.5">{supplier.country}</p>
+                                        <h3 className="text-gray-900 font-semibold text-sm">{supplier.name}</h3>
+                                        <p className="text-gray-400 text-xs mt-0.5">{supplier.country}</p>
                                     </div>
                                     <div className="flex items-center gap-1 px-2.5 py-1 bg-adhi-orange/10 rounded-lg">
                                         <Star size={12} className="text-adhi-orange fill-adhi-orange" />
@@ -267,13 +267,13 @@ export default function ProcurementHub() {
                                     </div>
                                 </div>
                                 <div className="grid grid-cols-2 gap-3">
-                                    <div className="bg-white/[0.03] rounded-xl p-3 text-center">
-                                        <div className="text-lg font-bold text-white">{supplier.onTime}%</div>
-                                        <div className="text-adhi-gray-500 text-[10px] uppercase tracking-wider">On-Time</div>
+                                    <div className="bg-gray-100 rounded-xl p-3 text-center">
+                                        <div className="text-lg font-bold text-gray-900">{supplier.onTime}%</div>
+                                        <div className="text-gray-400 text-[10px] uppercase tracking-wider">On-Time</div>
                                     </div>
-                                    <div className="bg-white/[0.03] rounded-xl p-3 text-center">
+                                    <div className="bg-gray-100 rounded-xl p-3 text-center">
                                         <div className="text-lg font-bold text-adhi-orange">{supplier.orders}</div>
-                                        <div className="text-adhi-gray-500 text-[10px] uppercase tracking-wider">Orders</div>
+                                        <div className="text-gray-400 text-[10px] uppercase tracking-wider">Orders</div>
                                     </div>
                                 </div>
                             </motion.div>
@@ -293,10 +293,10 @@ export default function ProcurementHub() {
                         className="text-center mb-16"
                     >
                         <span className="section-label">Procurement Flow</span>
-                        <h2 className="text-2xl md:text-3xl font-bold text-white mt-4 mb-3">
+                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mt-4 mb-3">
                             End-to-End <span className="gradient-text">Procurement Pipeline</span>
                         </h2>
-                        <p className="text-adhi-gray-400 text-sm max-w-xl mx-auto">
+                        <p className="text-gray-500 text-sm max-w-xl mx-auto">
                             A streamlined, 7-step procurement journey from request to site delivery — all digitally tracked.
                         </p>
                     </motion.div>
@@ -317,14 +317,14 @@ export default function ProcurementHub() {
                                         transition={{ duration: 0.5, delay: i * 0.08 }}
                                         className="flex flex-col items-center text-center"
                                     >
-                                        <div className="w-14 h-14 rounded-2xl bg-adhi-dark border border-adhi-orange/20 flex items-center justify-center mb-3 relative">
+                                        <div className="w-14 h-14 rounded-2xl bg-gray-50 border border-adhi-orange/20 flex items-center justify-center mb-3 relative">
                                             <Icon size={22} className="text-adhi-orange" />
-                                            <div className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-adhi-orange text-white text-[10px] font-bold flex items-center justify-center">
+                                            <div className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-adhi-orange text-gray-900 text-[10px] font-bold flex items-center justify-center">
                                                 {step.step}
                                             </div>
                                         </div>
-                                        <h3 className="text-white font-semibold text-xs mb-1">{step.label}</h3>
-                                        <p className="text-adhi-gray-500 text-[10px] leading-relaxed">{step.description}</p>
+                                        <h3 className="text-gray-900 font-semibold text-xs mb-1">{step.label}</h3>
+                                        <p className="text-gray-400 text-[10px] leading-relaxed">{step.description}</p>
 
                                         {/* Mobile arrow */}
                                         {i < procurementFlowSteps.length - 1 && (
@@ -341,7 +341,7 @@ export default function ProcurementHub() {
             </section>
 
             {/* ===== HOW IT WORKS ===== */}
-            <section id="how-it-works" className="py-16 md:py-24 bg-adhi-dark/30">
+            <section id="how-it-works" className="py-16 md:py-24 bg-gray-50">
                 <div className="max-w-7xl mx-auto px-6">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -351,7 +351,7 @@ export default function ProcurementHub() {
                         className="text-center mb-12"
                     >
                         <span className="section-label">Platform Benefits</span>
-                        <h2 className="text-2xl md:text-3xl font-bold text-white mt-4 mb-3">
+                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mt-4 mb-3">
                             Why Use ADHI <span className="gradient-text">Procurement?</span>
                         </h2>
                     </motion.div>
@@ -376,8 +376,8 @@ export default function ProcurementHub() {
                                 <div className="w-12 h-12 rounded-xl bg-adhi-orange/10 flex items-center justify-center mb-4">
                                     <item.icon size={22} className="text-adhi-orange" />
                                 </div>
-                                <h3 className="text-white font-semibold text-base mb-2">{item.title}</h3>
-                                <p className="text-adhi-gray-400 text-sm leading-relaxed">{item.desc}</p>
+                                <h3 className="text-gray-900 font-semibold text-base mb-2">{item.title}</h3>
+                                <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
                             </motion.div>
                         ))}
                     </div>

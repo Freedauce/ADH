@@ -10,8 +10,8 @@ export default function ChartCard({ title, subtitle, children, className = '' })
             className={`glass-card p-6 md:p-8 ${className}`}
         >
             <div className="mb-6">
-                <h3 className="text-lg font-semibold text-white mb-1">{title}</h3>
-                {subtitle && <p className="text-sm text-adhi-gray-400">{subtitle}</p>}
+                <h3 className="text-lg font-semibold text-gray-900 mb-1">{title}</h3>
+                {subtitle && <p className="text-sm text-gray-500">{subtitle}</p>}
             </div>
             {children}
         </motion.div>

@@ -14,8 +14,8 @@ import {
 const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
         return (
-            <div className="bg-adhi-gray-900 border border-white/10 rounded-lg px-4 py-3 shadow-xl">
-                <p className="text-white text-sm font-medium mb-1">{label}</p>
+            <div className="bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 shadow-xl">
+                <p className="text-gray-900 text-sm font-medium mb-1">{label}</p>
                 {payload.map((entry, i) => (
                     <p key={i} className="text-xs" style={{ color: entry.color }}>
                         {entry.name}: {entry.value.toLocaleString()} tCO₂
@@ -58,8 +58,8 @@ export default function CarbonDashboard() {
                         transition={{ duration: 0.6 }}
                         className="mb-8"
                     >
-                        <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">Sustainability at a Glance</h2>
-                        <p className="text-adhi-gray-400 text-sm">Key environmental metrics across all active ADHI projects</p>
+                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Sustainability at a Glance</h2>
+                        <p className="text-gray-500 text-sm">Key environmental metrics across all active ADHI projects</p>
                     </motion.div>
 
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -78,8 +78,8 @@ export default function CarbonDashboard() {
                                         <Icon size={18} className="text-adhi-orange" />
                                     </div>
                                     <div className="text-lg md:text-xl font-bold gradient-text mb-1">{item.value}</div>
-                                    <div className="text-white text-xs font-medium mb-1">{item.metric}</div>
-                                    <div className="text-adhi-gray-500 text-[10px] leading-relaxed">{item.description}</div>
+                                    <div className="text-gray-900 text-xs font-medium mb-1">{item.metric}</div>
+                                    <div className="text-gray-400 text-[10px] leading-relaxed">{item.description}</div>
                                 </motion.div>
                             );
                         })}
@@ -88,7 +88,7 @@ export default function CarbonDashboard() {
             </section>
 
             {/* ===== MAIN CHARTS ===== */}
-            <section className="py-12 md:py-16 bg-adhi-dark/30">
+            <section className="py-12 md:py-16 bg-gray-50">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
                         {/* Graph 1: Embodied vs Operational */}
@@ -148,10 +148,10 @@ export default function CarbonDashboard() {
                                     <div className="text-5xl md:text-6xl font-bold gradient-text mb-2">
                                         {carbonAvoidedHighlight.value}
                                     </div>
-                                    <div className="text-xl text-adhi-gray-300 font-medium mb-1">
+                                    <div className="text-xl text-gray-600 font-medium mb-1">
                                         {carbonAvoidedHighlight.unit}
                                     </div>
-                                    <div className="text-sm text-adhi-gray-500">
+                                    <div className="text-sm text-gray-400">
                                         {carbonAvoidedHighlight.label}
                                     </div>
                                 </motion.div>
@@ -197,20 +197,20 @@ export default function CarbonDashboard() {
                                     <button
                                         id="carbon-estimator-dropdown"
                                         onClick={() => setDropdownOpen(!dropdownOpen)}
-                                        className="w-full flex items-center justify-between px-4 py-3 bg-adhi-gray-800 border border-white/10 rounded-xl text-sm text-white hover:border-adhi-orange/30 transition-colors"
+                                        className="w-full flex items-center justify-between px-4 py-3 bg-gray-100 border border-gray-200 rounded-xl text-sm text-gray-900 hover:border-adhi-orange/30 transition-colors"
                                     >
                                         <span className="flex items-center gap-2">
                                             <Home size={16} className="text-adhi-orange" />
                                             {selectedProject.label}
                                         </span>
-                                        <ChevronDown size={16} className={`text-adhi-gray-400 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
+                                        <ChevronDown size={16} className={`text-gray-500 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
                                     </button>
 
                                     {dropdownOpen && (
                                         <motion.div
                                             initial={{ opacity: 0, y: -10 }}
                                             animate={{ opacity: 1, y: 0 }}
-                                            className="absolute top-full left-0 right-0 mt-2 bg-adhi-gray-800 border border-white/10 rounded-xl overflow-hidden z-20 shadow-xl"
+                                            className="absolute top-full left-0 right-0 mt-2 bg-gray-100 border border-gray-200 rounded-xl overflow-hidden z-20 shadow-xl"
                                         >
                                             {carbonEstimatorOptions.map((opt) => (
                                                 <button
@@ -218,7 +218,7 @@ export default function CarbonDashboard() {
                                                     onClick={() => { setSelectedProject(opt); setDropdownOpen(false); }}
                                                     className={`w-full text-left px-4 py-3 text-sm transition-colors ${selectedProject.value === opt.value
                                                         ? 'text-adhi-orange bg-adhi-orange/10'
-                                                        : 'text-adhi-gray-300 hover:bg-white/5'
+                                                        : 'text-gray-600 hover:bg-gray-100'
                                                         }`}
                                                 >
                                                     {opt.label}
@@ -238,7 +238,7 @@ export default function CarbonDashboard() {
                                     >
                                         <div className="flex items-start gap-3">
                                             <TrendingDown size={20} className="text-adhi-orange mt-0.5 flex-shrink-0" />
-                                            <p className="text-sm text-adhi-gray-300 leading-relaxed">
+                                            <p className="text-sm text-gray-600 leading-relaxed">
                                                 {selectedProject.result}
                                             </p>
                                         </div>
@@ -264,8 +264,8 @@ export default function CarbonDashboard() {
                         transition={{ duration: 0.6 }}
                         className="mb-8"
                     >
-                        <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">Carbon Impact by Country</h2>
-                        <p className="text-adhi-gray-400 text-sm">Illustrative carbon avoided per country of operation</p>
+                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Carbon Impact by Country</h2>
+                        <p className="text-gray-500 text-sm">Illustrative carbon avoided per country of operation</p>
                     </motion.div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
@@ -278,13 +278,13 @@ export default function CarbonDashboard() {
                                 transition={{ duration: 0.5, delay: i * 0.1 }}
                                 className="glass-card p-6"
                             >
-                                <h3 className="text-white font-semibold text-base mb-1">{item.country}</h3>
-                                <p className="text-adhi-gray-500 text-xs mb-4">{item.projects} projects</p>
+                                <h3 className="text-gray-900 font-semibold text-base mb-1">{item.country}</h3>
+                                <p className="text-gray-400 text-xs mb-4">{item.projects} projects</p>
                                 <div className="text-3xl font-bold gradient-text mb-1">
                                     {item.avoided.toLocaleString()}
                                 </div>
-                                <div className="text-adhi-gray-400 text-xs">tCO₂ avoided</div>
-                                <div className="mt-4 h-2 bg-adhi-gray-800 rounded-full overflow-hidden">
+                                <div className="text-gray-500 text-xs">tCO₂ avoided</div>
+                                <div className="mt-4 h-2 bg-gray-100 rounded-full overflow-hidden">
                                     <motion.div
                                         initial={{ width: 0 }}
                                         whileInView={{ width: `${(item.avoided / 18500) * 100}%` }}
@@ -327,7 +327,7 @@ export default function CarbonDashboard() {
             </section>
 
             {/* ===== METHODOLOGY ===== */}
-            <section className="py-16 md:py-24 bg-adhi-dark/30">
+            <section className="py-16 md:py-24 bg-gray-50">
                 <div className="max-w-7xl mx-auto px-6">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -337,10 +337,10 @@ export default function CarbonDashboard() {
                         className="text-center mb-12"
                     >
                         <span className="section-label">Methodology</span>
-                        <h2 className="text-2xl md:text-3xl font-bold text-white mt-4 mb-3">
+                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mt-4 mb-3">
                             How We <span className="gradient-text">Measure Impact</span>
                         </h2>
-                        <p className="text-adhi-gray-400 text-sm max-w-xl mx-auto">
+                        <p className="text-gray-500 text-sm max-w-xl mx-auto">
                             ADHI's carbon accounting follows industry best practices for construction lifecycle analysis.
                         </p>
                     </motion.div>
@@ -372,8 +372,8 @@ export default function CarbonDashboard() {
                                 className="glass-card p-8"
                             >
                                 <div className="text-2xl font-bold gradient-text mb-4">{item.stat}</div>
-                                <h3 className="text-white font-semibold text-lg mb-3">{item.title}</h3>
-                                <p className="text-adhi-gray-400 text-sm leading-relaxed">{item.desc}</p>
+                                <h3 className="text-gray-900 font-semibold text-lg mb-3">{item.title}</h3>
+                                <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
                             </motion.div>
                         ))}
                     </div>

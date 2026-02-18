@@ -31,8 +31,8 @@ export default function Navbar() {
         <nav
             id="main-nav"
             className={`absolute top-0 left-0 right-0 z-50 transition-all duration-500 overflow-hidden ${isScrolled
-                ? 'bg-black/90 backdrop-blur-2xl border-b border-adhi-orange/10 py-2'
-                : 'bg-transparent py-4'
+                ? 'bg-white/95 backdrop-blur-2xl border-b border-gray-200 py-2 shadow-sm'
+                : 'bg-white/80 backdrop-blur-md py-4'
                 }`}
         >
             <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
@@ -55,7 +55,7 @@ export default function Navbar() {
                                 to={link.path}
                                 className={`relative px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${isActive
                                     ? 'text-adhi-orange bg-adhi-orange/10'
-                                    : 'text-adhi-gray-400 hover:text-white hover:bg-white/5'
+                                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
                                     }`}
                             >
                                 {link.label}
@@ -76,7 +76,7 @@ export default function Navbar() {
                     {/* Contact */}
                     <a
                         href="mailto:info@adhi.africa"
-                        className="hidden lg:inline-flex items-center gap-2 text-adhi-gray-400 hover:text-white text-sm transition-colors duration-300 px-3 py-2"
+                        className="hidden lg:inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 text-sm transition-colors duration-300 px-3 py-2"
                     >
                         <span>Contact</span>
                     </a>
@@ -93,7 +93,7 @@ export default function Navbar() {
                     <button
                         id="mobile-menu-toggle"
                         onClick={() => setIsMobileOpen(!isMobileOpen)}
-                        className="lg:hidden text-white p-2.5 rounded-xl hover:bg-white/5 transition-colors border border-white/10"
+                        className="lg:hidden text-gray-700 p-2.5 rounded-xl hover:bg-gray-100 transition-colors border border-gray-200"
                         aria-label="Toggle menu"
                     >
                         {isMobileOpen ? <X size={20} /> : <Menu size={20} />}
@@ -109,7 +109,7 @@ export default function Navbar() {
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
                         transition={{ duration: 0.3, ease: 'easeInOut' }}
-                        className="lg:hidden overflow-hidden bg-black/95 backdrop-blur-2xl border-t border-adhi-orange/10"
+                        className="lg:hidden overflow-hidden bg-white/98 backdrop-blur-2xl border-t border-gray-200"
                     >
                         <div className="px-6 py-6 flex flex-col gap-2">
                             {navLinks.map((link) => {
@@ -121,20 +121,20 @@ export default function Navbar() {
                                         to={link.path}
                                         className={`flex items-center gap-4 px-4 py-4 rounded-2xl text-sm font-medium transition-all ${isActive
                                             ? 'text-adhi-orange bg-adhi-orange/10 border border-adhi-orange/20'
-                                            : 'text-adhi-gray-400 hover:text-white hover:bg-white/5 border border-transparent'
+                                            : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50 border border-transparent'
                                             }`}
                                     >
-                                        <div className={`w-10 h-10 rounded-xl ${isActive ? 'bg-adhi-orange/20' : 'bg-white/5'} flex items-center justify-center flex-shrink-0`}>
+                                        <div className={`w-10 h-10 rounded-xl ${isActive ? 'bg-adhi-orange/20' : 'bg-gray-100'} flex items-center justify-center flex-shrink-0`}>
                                             <Icon size={18} className={isActive ? 'text-adhi-orange' : 'text-adhi-gray-500'} />
                                         </div>
                                         <div>
-                                            <div className={isActive ? 'text-adhi-orange' : 'text-white'}>{link.label}</div>
+                                            <div className={isActive ? 'text-adhi-orange' : 'text-gray-900'}>{link.label}</div>
                                             <div className="text-xs text-adhi-gray-500 mt-0.5">{link.description}</div>
                                         </div>
                                     </Link>
                                 );
                             })}
-                            <div className="pt-4 border-t border-white/5 mt-2">
+                            <div className="pt-4 border-t border-gray-200 mt-2">
                                 <Link
                                     to="/investor"
                                     className="btn-primary text-sm text-center justify-center w-full"

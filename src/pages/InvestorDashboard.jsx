@@ -17,8 +17,8 @@ import {
 const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
         return (
-            <div className="bg-adhi-gray-900 border border-white/10 rounded-lg px-4 py-3 shadow-xl">
-                <p className="text-white text-sm font-medium mb-1">{label}</p>
+            <div className="bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 shadow-xl">
+                <p className="text-gray-900 text-sm font-medium mb-1">{label}</p>
                 {payload.map((entry, i) => (
                     <p key={i} className="text-xs" style={{ color: entry.color }}>
                         {entry.name}: {typeof entry.value === 'number' ? entry.value.toLocaleString() : entry.value}
@@ -60,8 +60,8 @@ export default function InvestorDashboard() {
                         transition={{ duration: 0.6 }}
                         className="mb-8"
                     >
-                        <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">Key Performance Indicators</h2>
-                        <p className="text-adhi-gray-400 text-sm">Real-time metrics for investor oversight</p>
+                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Key Performance Indicators</h2>
+                        <p className="text-gray-500 text-sm">Real-time metrics for investor oversight</p>
                     </motion.div>
 
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
@@ -87,7 +87,7 @@ export default function InvestorDashboard() {
                                         </div>
                                     </div>
                                     <div className="text-xl md:text-2xl font-bold gradient-text mb-1">{kpi.value}</div>
-                                    <div className="text-adhi-gray-400 text-xs">{kpi.label}</div>
+                                    <div className="text-gray-500 text-xs">{kpi.label}</div>
                                 </motion.div>
                             );
                         })}
@@ -96,7 +96,7 @@ export default function InvestorDashboard() {
             </section>
 
             {/* ===== INVESTMENT ROUNDS ===== */}
-            <section id="investment-rounds" className="py-12 md:py-16 bg-adhi-dark/30">
+            <section id="investment-rounds" className="py-12 md:py-16 bg-gray-50">
                 <div className="max-w-7xl mx-auto px-6">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -105,8 +105,8 @@ export default function InvestorDashboard() {
                         transition={{ duration: 0.6 }}
                         className="mb-8"
                     >
-                        <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">Funding History</h2>
-                        <p className="text-adhi-gray-400 text-sm">Investment rounds and capital raised to date</p>
+                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Funding History</h2>
+                        <p className="text-gray-500 text-sm">Investment rounds and capital raised to date</p>
                     </motion.div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
@@ -130,13 +130,13 @@ export default function InvestorDashboard() {
                                         <span className="text-adhi-orange text-[10px] font-semibold">LIVE</span>
                                     </div>
                                 )}
-                                <div className="text-adhi-gray-500 text-xs mb-2">{round.date}</div>
-                                <h3 className="text-white font-semibold text-base mb-1">{round.round}</h3>
+                                <div className="text-gray-400 text-xs mb-2">{round.date}</div>
+                                <h3 className="text-gray-900 font-semibold text-base mb-1">{round.round}</h3>
                                 <div className="text-2xl font-bold gradient-text mb-2">{round.amount}</div>
-                                <div className="text-adhi-gray-400 text-xs mb-1">
-                                    Valuation: <span className="text-white font-medium">{round.valuation}</span>
+                                <div className="text-gray-500 text-xs mb-1">
+                                    Valuation: <span className="text-gray-900 font-medium">{round.valuation}</span>
                                 </div>
-                                <div className="text-adhi-gray-500 text-xs">{round.leadInvestor}</div>
+                                <div className="text-gray-400 text-xs">{round.leadInvestor}</div>
                             </motion.div>
                         ))}
                     </div>
@@ -153,8 +153,8 @@ export default function InvestorDashboard() {
                         transition={{ duration: 0.6 }}
                         className="mb-8"
                     >
-                        <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">Performance Analytics</h2>
-                        <p className="text-adhi-gray-400 text-sm">Quarterly financial and operational performance</p>
+                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Performance Analytics</h2>
+                        <p className="text-gray-500 text-sm">Quarterly financial and operational performance</p>
                     </motion.div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
@@ -252,7 +252,7 @@ export default function InvestorDashboard() {
             </section>
 
             {/* ===== UNIT ECONOMICS ===== */}
-            <section className="py-16 md:py-24 bg-adhi-dark/30">
+            <section className="py-16 md:py-24 bg-gray-50">
                 <div className="max-w-7xl mx-auto px-6">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -262,10 +262,10 @@ export default function InvestorDashboard() {
                         className="text-center mb-12"
                     >
                         <span className="section-label">Unit Economics</span>
-                        <h2 className="text-2xl md:text-3xl font-bold text-white mt-4 mb-3">
+                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mt-4 mb-3">
                             Financial <span className="gradient-text">Breakdown</span>
                         </h2>
-                        <p className="text-adhi-gray-400 text-sm max-w-xl mx-auto">
+                        <p className="text-gray-500 text-sm max-w-xl mx-auto">
                             Per-unit financial metrics demonstrating the viability and profitability of each ADHI project.
                         </p>
                     </motion.div>
@@ -280,9 +280,9 @@ export default function InvestorDashboard() {
                                 transition={{ duration: 0.5, delay: i * 0.08 }}
                                 className="glass-card p-6"
                             >
-                                <div className="text-adhi-gray-500 text-xs uppercase tracking-wider mb-2">{item.label}</div>
+                                <div className="text-gray-400 text-xs uppercase tracking-wider mb-2">{item.label}</div>
                                 <div className="text-2xl font-bold gradient-text mb-2">{item.value}</div>
-                                <p className="text-adhi-gray-400 text-xs leading-relaxed">{item.description}</p>
+                                <p className="text-gray-500 text-xs leading-relaxed">{item.description}</p>
                             </motion.div>
                         ))}
                     </div>
@@ -295,7 +295,7 @@ export default function InvestorDashboard() {
 
             {/* ===== CTA ===== */}
             <section className="py-20 md:py-28 relative">
-                <div className="absolute inset-0 bg-gradient-to-b from-black via-adhi-dark to-black" />
+                <div className="absolute inset-0 bg-gradient-to-b from-white via-white to-white" />
                 <div className="relative max-w-4xl mx-auto px-6 text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -303,10 +303,10 @@ export default function InvestorDashboard() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                             Interested in <span className="gradient-text">Investing?</span>
                         </h2>
-                        <p className="text-adhi-gray-400 text-base mb-8 max-w-2xl mx-auto">
+                        <p className="text-gray-500 text-base mb-8 max-w-2xl mx-auto">
                             Join the growing list of investors backing Africa's digital housing revolution.
                             Series A is currently open for qualified investors.
                         </p>

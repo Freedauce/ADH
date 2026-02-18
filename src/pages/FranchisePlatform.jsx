@@ -9,13 +9,13 @@ import { franchiseOverview, allFranchises, trainingModules, houseKits } from '..
 const statusCfg = {
     Completed: { color: 'text-green-400', bg: 'bg-green-500/20', Icon: CheckCircle2 },
     'In Progress': { color: 'text-adhi-orange', bg: 'bg-adhi-orange/20', Icon: Clock },
-    'Not Started': { color: 'text-adhi-gray-500', bg: 'bg-adhi-gray-700', Icon: Lock },
+    'Not Started': { color: 'text-gray-400', bg: 'bg-gray-200', Icon: Lock },
 };
 
 const franchiseStatusColors = {
     'Active': 'bg-green-500/20 text-green-400',
     'In Training': 'bg-adhi-orange/20 text-adhi-orange',
-    'Planned': 'bg-adhi-gray-700 text-adhi-gray-400',
+    'Planned': 'bg-gray-200 text-gray-500',
 };
 
 const franchiseStats = [
@@ -53,8 +53,8 @@ export default function FranchisePlatform() {
                                         <Icon size={18} className="text-adhi-orange" />
                                     </div>
                                     <div className="text-2xl md:text-3xl font-bold gradient-text mb-1">{stat.value}</div>
-                                    <div className="text-white text-xs font-medium mb-0.5">{stat.label}</div>
-                                    <div className="text-adhi-gray-500 text-[10px]">{stat.sub}</div>
+                                    <div className="text-gray-900 text-xs font-medium mb-0.5">{stat.label}</div>
+                                    <div className="text-gray-400 text-[10px]">{stat.sub}</div>
                                 </motion.div>
                             );
                         })}
@@ -63,7 +63,7 @@ export default function FranchisePlatform() {
             </section>
 
             {/* ===== ALL FRANCHISES ===== */}
-            <section className="py-12 md:py-16 bg-adhi-dark/30">
+            <section className="py-12 md:py-16 bg-gray-50">
                 <div className="max-w-7xl mx-auto px-6">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -72,8 +72,8 @@ export default function FranchisePlatform() {
                         transition={{ duration: 0.6 }}
                         className="mb-8"
                     >
-                        <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">Franchise Network</h2>
-                        <p className="text-adhi-gray-400 text-sm">All ADHI franchise operations across the continent</p>
+                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Franchise Network</h2>
+                        <p className="text-gray-500 text-sm">All ADHI franchise operations across the continent</p>
                     </motion.div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -90,8 +90,8 @@ export default function FranchisePlatform() {
                                     <div className="flex items-center gap-3">
                                         <span className="text-3xl">{franchise.flag}</span>
                                         <div>
-                                            <h3 className="text-white font-semibold text-sm">{franchise.name}</h3>
-                                            <p className="text-adhi-gray-500 text-xs">Since {franchise.since}</p>
+                                            <h3 className="text-gray-900 font-semibold text-sm">{franchise.name}</h3>
+                                            <p className="text-gray-400 text-xs">Since {franchise.since}</p>
                                         </div>
                                     </div>
                                     <span className={`px-2.5 py-1 rounded-full text-xs font-medium ${franchiseStatusColors[franchise.status]}`}>
@@ -100,19 +100,19 @@ export default function FranchisePlatform() {
                                 </div>
 
                                 <div className="grid grid-cols-3 gap-3 mb-4">
-                                    <div className="bg-white/[0.03] rounded-xl p-2.5 text-center">
-                                        <div className="text-base font-bold text-white">{franchise.builders}</div>
-                                        <div className="text-adhi-gray-500 text-[9px] uppercase tracking-wider">Builders</div>
+                                    <div className="bg-gray-100 rounded-xl p-2.5 text-center">
+                                        <div className="text-base font-bold text-gray-900">{franchise.builders}</div>
+                                        <div className="text-gray-400 text-[9px] uppercase tracking-wider">Builders</div>
                                     </div>
-                                    <div className="bg-white/[0.03] rounded-xl p-2.5 text-center">
+                                    <div className="bg-gray-100 rounded-xl p-2.5 text-center">
                                         <div className="text-base font-bold text-adhi-orange">{franchise.projects}</div>
-                                        <div className="text-adhi-gray-500 text-[9px] uppercase tracking-wider">Projects</div>
+                                        <div className="text-gray-400 text-[9px] uppercase tracking-wider">Projects</div>
                                     </div>
-                                    <div className="bg-white/[0.03] rounded-xl p-2.5 text-center">
-                                        <div className="text-base font-bold text-white flex items-center justify-center gap-1">
-                                            {franchise.certified ? <CheckCircle2 size={14} className="text-green-400" /> : <Lock size={14} className="text-adhi-gray-500" />}
+                                    <div className="bg-gray-100 rounded-xl p-2.5 text-center">
+                                        <div className="text-base font-bold text-gray-900 flex items-center justify-center gap-1">
+                                            {franchise.certified ? <CheckCircle2 size={14} className="text-green-400" /> : <Lock size={14} className="text-gray-400" />}
                                         </div>
-                                        <div className="text-adhi-gray-500 text-[9px] uppercase tracking-wider">Certified</div>
+                                        <div className="text-gray-400 text-[9px] uppercase tracking-wider">Certified</div>
                                     </div>
                                 </div>
                             </motion.div>
@@ -138,8 +138,8 @@ export default function FranchisePlatform() {
                                     <Award size={24} className="text-adhi-orange" />
                                 </div>
                                 <div>
-                                    <h3 className="text-lg font-semibold text-white">Featured: {franchiseOverview.name}</h3>
-                                    <p className="text-adhi-gray-400 text-sm">Active pilot program</p>
+                                    <h3 className="text-lg font-semibold text-gray-900">Featured: {franchiseOverview.name}</h3>
+                                    <p className="text-gray-500 text-sm">Active pilot program</p>
                                 </div>
                             </div>
                             {[
@@ -149,13 +149,13 @@ export default function FranchisePlatform() {
                                 ['Start Date', franchiseOverview.startDate],
                                 ['Modules', `${franchiseOverview.modules} Modules`],
                             ].map(([k, v], i) => (
-                                <div key={k} className={`flex items-center justify-between py-3.5 ${i < 4 ? 'border-b border-white/5' : ''}`}>
-                                    <span className="text-adhi-gray-400 text-sm">{k}</span>
+                                <div key={k} className={`flex items-center justify-between py-3.5 ${i < 4 ? 'border-b border-gray-200' : ''}`}>
+                                    <span className="text-gray-500 text-sm">{k}</span>
                                     {k === 'Status' ? (
                                         <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-500/20 text-green-400 text-xs font-medium">
                                             <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />{v}
                                         </span>
-                                    ) : <span className="text-white font-medium text-sm">{v}</span>}
+                                    ) : <span className="text-gray-900 font-medium text-sm">{v}</span>}
                                 </div>
                             ))}
                         </motion.div>
@@ -173,16 +173,16 @@ export default function FranchisePlatform() {
                                     <Award size={40} className="text-adhi-orange" />
                                 </div>
                                 <div className="absolute -top-1 -right-1 w-8 h-8 rounded-full bg-adhi-orange flex items-center justify-center">
-                                    <CheckCircle2 size={16} className="text-white" />
+                                    <CheckCircle2 size={16} className="text-gray-900" />
                                 </div>
                             </div>
-                            <h3 className="text-xl font-bold text-white mb-2">Certified ADHI Builder</h3>
-                            <p className="text-adhi-gray-400 text-sm mb-4">Industry-recognized construction certification</p>
+                            <h3 className="text-xl font-bold text-gray-900 mb-2">Certified ADHI Builder</h3>
+                            <p className="text-gray-500 text-sm mb-4">Industry-recognized construction certification</p>
                             <div className="inline-flex items-center gap-2 px-4 py-2 bg-adhi-orange/10 border border-adhi-orange/20 rounded-full mb-4">
                                 <div className="w-2 h-2 rounded-full bg-adhi-orange" />
                                 <span className="text-adhi-orange text-xs font-semibold uppercase tracking-wider">Verified</span>
                             </div>
-                            <div className="text-adhi-gray-400 text-xs leading-relaxed max-w-xs">
+                            <div className="text-gray-500 text-xs leading-relaxed max-w-xs">
                                 Complete all 6 training modules, pass quality assessments, and demonstrate competency to earn ADHI Builder Certification.
                             </div>
                             <p className="text-adhi-gray-600 text-xs italic mt-6">Static badge – Phase 1 Demo</p>
@@ -194,8 +194,8 @@ export default function FranchisePlatform() {
                         <div className="flex items-center gap-3 mb-6">
                             <BookOpen size={22} className="text-adhi-orange" />
                             <div>
-                                <h2 className="text-2xl font-bold text-white">Training Modules</h2>
-                                <p className="text-adhi-gray-400 text-sm">6 comprehensive modules • 90 total hours</p>
+                                <h2 className="text-2xl font-bold text-gray-900">Training Modules</h2>
+                                <p className="text-gray-500 text-sm">6 comprehensive modules • 90 total hours</p>
                             </div>
                         </div>
                         <div className="space-y-4">
@@ -217,15 +217,15 @@ export default function FranchisePlatform() {
                                                 </div>
                                                 <div className="flex-1 min-w-0">
                                                     <div className="flex items-center gap-2 mb-1">
-                                                        <h3 className="text-white font-medium text-sm">{mod.title}</h3>
-                                                        <span className="text-adhi-gray-500 text-[10px] flex-shrink-0">{mod.hours}h</span>
+                                                        <h3 className="text-gray-900 font-medium text-sm">{mod.title}</h3>
+                                                        <span className="text-gray-400 text-[10px] flex-shrink-0">{mod.hours}h</span>
                                                     </div>
-                                                    <p className="text-adhi-gray-500 text-xs leading-relaxed">{mod.description}</p>
+                                                    <p className="text-gray-400 text-xs leading-relaxed">{mod.description}</p>
                                                     <span className={`text-xs font-medium ${c.color} mt-1 inline-block`}>{mod.status}</span>
                                                 </div>
                                             </div>
                                             <div className="flex items-center gap-3 md:w-64">
-                                                <div className="flex-1 h-2.5 bg-adhi-gray-800 rounded-full overflow-hidden">
+                                                <div className="flex-1 h-2.5 bg-gray-100 rounded-full overflow-hidden">
                                                     <motion.div
                                                         initial={{ width: 0 }}
                                                         whileInView={{ width: `${mod.progress}%` }}
@@ -241,7 +241,7 @@ export default function FranchisePlatform() {
                                                         }}
                                                     />
                                                 </div>
-                                                <span className="text-xs text-adhi-gray-400 font-medium w-10 text-right">{mod.progress}%</span>
+                                                <span className="text-xs text-gray-500 font-medium w-10 text-right">{mod.progress}%</span>
                                             </div>
                                         </div>
                                     </motion.div>
@@ -255,8 +255,8 @@ export default function FranchisePlatform() {
                         <div className="flex items-center gap-3 mb-6">
                             <Package size={22} className="text-adhi-orange" />
                             <div>
-                                <h2 className="text-2xl font-bold text-white">House Kit Catalogue</h2>
-                                <p className="text-adhi-gray-400 text-sm">Standardized construction kits for every market segment</p>
+                                <h2 className="text-2xl font-bold text-gray-900">House Kit Catalogue</h2>
+                                <p className="text-gray-500 text-sm">Standardized construction kits for every market segment</p>
                             </div>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -274,33 +274,33 @@ export default function FranchisePlatform() {
                                             <Package size={22} className="text-adhi-orange" />
                                         </div>
                                         <div>
-                                            <h3 className="text-lg font-semibold text-white mb-1">{kit.name}</h3>
+                                            <h3 className="text-lg font-semibold text-gray-900 mb-1">{kit.name}</h3>
                                             <div className="text-adhi-orange text-sm font-bold">{kit.price}</div>
                                         </div>
                                     </div>
 
-                                    <p className="text-adhi-gray-400 text-sm leading-relaxed flex-1 mb-5">{kit.description}</p>
+                                    <p className="text-gray-500 text-sm leading-relaxed flex-1 mb-5">{kit.description}</p>
 
                                     {/* Kit Specs */}
                                     <div className="grid grid-cols-3 gap-3 mb-4">
-                                        <div className="bg-white/[0.03] rounded-xl p-3 text-center">
-                                            <div className="text-white text-sm font-medium">{kit.units}</div>
-                                            <div className="text-adhi-gray-500 text-[9px] uppercase tracking-wider">Config</div>
+                                        <div className="bg-gray-100 rounded-xl p-3 text-center">
+                                            <div className="text-gray-900 text-sm font-medium">{kit.units}</div>
+                                            <div className="text-gray-400 text-[9px] uppercase tracking-wider">Config</div>
                                         </div>
-                                        <div className="bg-white/[0.03] rounded-xl p-3 text-center">
-                                            <div className="text-white text-sm font-medium">{kit.sqm}</div>
-                                            <div className="text-adhi-gray-500 text-[9px] uppercase tracking-wider">Area</div>
+                                        <div className="bg-gray-100 rounded-xl p-3 text-center">
+                                            <div className="text-gray-900 text-sm font-medium">{kit.sqm}</div>
+                                            <div className="text-gray-400 text-[9px] uppercase tracking-wider">Area</div>
                                         </div>
-                                        <div className="bg-white/[0.03] rounded-xl p-3 text-center">
-                                            <div className="text-white text-sm font-medium">{kit.buildTime}</div>
-                                            <div className="text-adhi-gray-500 text-[9px] uppercase tracking-wider">Build</div>
+                                        <div className="bg-gray-100 rounded-xl p-3 text-center">
+                                            <div className="text-gray-900 text-sm font-medium">{kit.buildTime}</div>
+                                            <div className="text-gray-400 text-[9px] uppercase tracking-wider">Build</div>
                                         </div>
                                     </div>
 
                                     {/* Features */}
-                                    <div className="flex flex-wrap gap-1.5 pt-4 border-t border-white/5">
+                                    <div className="flex flex-wrap gap-1.5 pt-4 border-t border-gray-200">
                                         {kit.features.map(f => (
-                                            <span key={f} className="px-2.5 py-1 bg-adhi-orange/5 border border-adhi-orange/10 rounded-lg text-[10px] text-adhi-gray-300 font-medium">
+                                            <span key={f} className="px-2.5 py-1 bg-adhi-orange/5 border border-adhi-orange/10 rounded-lg text-[10px] text-gray-600 font-medium">
                                                 {f}
                                             </span>
                                         ))}
@@ -320,10 +320,10 @@ export default function FranchisePlatform() {
                             className="text-center mb-16"
                         >
                             <span className="section-label">Get Started</span>
-                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mt-5 mb-5 tracking-wide">
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mt-5 mb-5 tracking-wide">
                                 How to Become an <span className="gradient-text">ADHI Franchise Partner</span>
                             </h2>
-                            <p className="text-adhi-gray-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+                            <p className="text-gray-500 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
                                 Four simple steps to join Africa's fastest-growing housing construction network.
                             </p>
                         </motion.div>
@@ -346,10 +346,10 @@ export default function FranchisePlatform() {
                                         whileInView={{ opacity: 1, y: 0 }}
                                         viewport={{ once: true }}
                                         transition={{ duration: 0.6, delay: i * 0.12 }}
-                                        className="relative rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] hover:border-adhi-orange/20 transition-all duration-400 p-8 text-center group"
+                                        className="relative rounded-2xl border border-gray-200 bg-gray-50 hover:bg-gray-100 hover:border-adhi-orange/20 transition-all duration-400 p-8 text-center group"
                                     >
                                         {/* Step Number */}
-                                        <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-adhi-orange to-adhi-orange-dark text-white text-xl font-bold flex items-center justify-center mx-auto mb-6 shadow-lg shadow-adhi-orange/20 group-hover:scale-110 transition-transform duration-300">
+                                        <div className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-adhi-orange to-adhi-orange-dark text-gray-900 text-xl font-bold flex items-center justify-center mx-auto mb-6 shadow-lg shadow-adhi-orange/20 group-hover:scale-110 transition-transform duration-300">
                                             {item.step}
                                         </div>
 
@@ -359,8 +359,8 @@ export default function FranchisePlatform() {
                                         </div>
 
                                         {/* Content */}
-                                        <h3 className="text-white font-bold text-xl mb-3 tracking-wide">{item.title}</h3>
-                                        <p className="text-adhi-gray-400 text-sm md:text-base leading-relaxed">{item.desc}</p>
+                                        <h3 className="text-gray-900 font-bold text-xl mb-3 tracking-wide">{item.title}</h3>
+                                        <p className="text-gray-500 text-sm md:text-base leading-relaxed">{item.desc}</p>
                                     </motion.div>
                                 ))}
                             </div>

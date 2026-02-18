@@ -38,7 +38,7 @@ const offices = [
 
 export default function Footer() {
     return (
-        <footer id="site-footer" className="relative bg-adhi-dark border-t border-white/5">
+        <footer id="site-footer" className="relative bg-gray-50 border-t border-gray-200">
             {/* Top Gradient Line */}
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-adhi-orange/40 to-transparent" />
 
@@ -59,7 +59,7 @@ export default function Footer() {
                             <input
                                 type="email"
                                 placeholder="Enter your email"
-                                className="px-5 py-3.5 bg-adhi-gray-800 border border-white/10 rounded-xl text-sm text-white placeholder-adhi-gray-500 focus:outline-none focus:border-adhi-orange/40 transition-colors w-full sm:w-72"
+                                className="px-5 py-3.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-adhi-orange/40 transition-colors w-full sm:w-72"
                             />
                             <button className="btn-primary whitespace-nowrap justify-center">
                                 <Mail size={16} />
@@ -81,7 +81,7 @@ export default function Footer() {
                                 className="h-14 w-auto object-contain"
                             />
                         </Link>
-                        <p className="text-adhi-gray-400 text-sm leading-relaxed mb-5 max-w-xs">
+                        <p className="text-gray-500 text-sm leading-relaxed mb-5 max-w-xs">
                             African Development Housing Initiative. Digitizing housing infrastructure across Africa through procurement, carbon accountability, and franchise scalability.
                         </p>
 
@@ -112,13 +112,13 @@ export default function Footer() {
                     {/* Link Columns */}
                     {Object.entries(footerLinks).map(([title, links]) => (
                         <div key={title}>
-                            <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-wider">{title}</h4>
+                            <h4 className="text-gray-900 font-semibold text-sm mb-4 uppercase tracking-wider">{title}</h4>
                             <ul className="space-y-3">
                                 {links.map((link) => (
                                     <li key={link.label}>
                                         <Link
                                             to={link.path}
-                                            className="text-adhi-gray-400 text-sm hover:text-adhi-orange transition-colors duration-300 flex items-center gap-1.5 group"
+                                            className="text-gray-500 text-sm hover:text-adhi-orange transition-colors duration-300 flex items-center gap-1.5 group"
                                         >
                                             {link.label}
                                             <ArrowUpRight size={11} className="opacity-0 group-hover:opacity-100 transition-opacity text-adhi-orange" />
@@ -131,7 +131,7 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
                     <p className="text-adhi-gray-500 text-xs">
                         © {new Date().getFullYear()} ADHI – African Development Housing Initiative. All rights reserved.
                     </p>

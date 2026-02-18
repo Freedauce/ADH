@@ -9,23 +9,23 @@
     --container-2xl: 56rem;
     /* 896px — for max-w-2xl */
 
-    /* === COLORS === */
+    /* === COLORS (LIGHT THEME) === */
     --color-adhi-orange: #FF6A00;
     --color-adhi-orange-light: #FF8C33;
     --color-adhi-orange-dark: #CC5500;
-    --color-adhi-black: #000000;
-    --color-adhi-dark: #0A0A0A;
-    --color-adhi-dark-light: #1A1A1A;
-    --color-adhi-gray-900: #111111;
-    --color-adhi-gray-800: #1E1E1E;
-    --color-adhi-gray-700: #2A2A2A;
-    --color-adhi-gray-600: #3A3A3A;
+    --color-adhi-black: #FFFFFF;
+    --color-adhi-dark: #F8F9FA;
+    --color-adhi-dark-light: #FFFFFF;
+    --color-adhi-gray-900: #F3F4F6;
+    --color-adhi-gray-800: #E5E7EB;
+    --color-adhi-gray-700: #D1D5DB;
+    --color-adhi-gray-600: #9CA3AF;
     --color-adhi-gray-500: #6B7280;
-    --color-adhi-gray-400: #9CA3AF;
-    --color-adhi-gray-300: #D1D5DB;
-    --color-adhi-gray-200: #E5E7EB;
-    --color-adhi-gray-100: #F3F4F6;
-    --color-adhi-white: #FFFFFF;
+    --color-adhi-gray-400: #4B5563;
+    --color-adhi-gray-300: #374151;
+    --color-adhi-gray-200: #1F2937;
+    --color-adhi-gray-100: #111827;
+    --color-adhi-white: #1A1A1A;
 
     /* === FONTS === */
     --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
@@ -45,8 +45,8 @@ html {
 
 body {
     font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif !important;
-    background-color: #000000;
-    color: #FFFFFF;
+    background-color: #FFFFFF;
+    color: #1A1A1A;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
@@ -105,13 +105,51 @@ label {
     font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif !important;
 }
 
+/* ===== LIGHT THEME TEXT OVERRIDES ===== */
+/* Swap text-white → dark text everywhere */
+.text-white {
+    color: #1A1A1A !important;
+}
+
+/* Keep white text ONLY inside buttons and badges that need it */
+.btn-primary,
+.btn-primary *,
+[class*="bg-adhi-orange"] .text-white,
+[class*="bg-gradient-to"] .text-white {
+    color: #FFFFFF !important;
+}
+
+/* ===== LIGHT THEME BACKGROUND OVERRIDES ===== */
+.bg-black {
+    background-color: #FFFFFF !important;
+}
+
+.bg-black\/90 {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.bg-black\/80 {
+    background-color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.bg-black\/60 {
+    background-color: rgba(0, 0, 0, 0.4) !important;
+}
+
+.bg-black\/50 {
+    background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+.bg-black\/40 {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+}
+
 /* ===== FIXED NAVBAR OFFSET ===== */
 .main-content {
     padding-top: 80px;
 }
 
 /* ===== WIDE DESKTOP PADDING ===== */
-/* More generous horizontal padding on wide desktops */
 @media (min-width: 1440px) {
     .px-6 {
         padding-left: 3rem !important;
@@ -125,7 +163,7 @@ label {
 }
 
 ::-webkit-scrollbar-track {
-    background: #0A0A0A;
+    background: #F3F4F6;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -139,8 +177,8 @@ label {
 
 /* ===== SELECTION ===== */
 ::selection {
-    background: rgba(255, 106, 0, 0.3);
-    color: #FFFFFF;
+    background: rgba(255, 106, 0, 0.2);
+    color: #1A1A1A;
 }
 
 /* ===== ANIMATIONS ===== */
@@ -182,11 +220,11 @@ label {
 
     0%,
     100% {
-        box-shadow: 0 0 20px rgba(255, 106, 0, 0.15);
+        box-shadow: 0 0 20px rgba(255, 106, 0, 0.1);
     }
 
     50% {
-        box-shadow: 0 0 40px rgba(255, 106, 0, 0.3);
+        box-shadow: 0 0 40px rgba(255, 106, 0, 0.2);
     }
 }
 
@@ -222,27 +260,28 @@ label {
 
 /* ===== GRADIENT TEXT ===== */
 .gradient-text {
-    background: linear-gradient(135deg, #FF6A00, #FF8C33, #FFAA55);
+    background: linear-gradient(135deg, #FF6A00, #CC5500, #FF8C33);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
-/* ===== GLASS CARD ===== */
+/* ===== GLASS CARD (LIGHT VERSION) ===== */
 .glass-card {
-    background: rgba(26, 26, 26, 0.7);
+    background: #FFFFFF;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 106, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 16px;
     padding: 1.5rem;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.03);
 }
 
 .glass-card:hover {
-    border-color: rgba(255, 106, 0, 0.3);
+    border-color: rgba(255, 106, 0, 0.25);
     transform: translateY(-4px);
-    box-shadow: 0 20px 60px rgba(255, 106, 0, 0.1);
+    box-shadow: 0 12px 40px rgba(255, 106, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.06);
 }
 
 /* ===== GLOW BORDER ===== */
@@ -255,7 +294,7 @@ label {
     position: absolute;
     inset: -1px;
     border-radius: inherit;
-    background: linear-gradient(135deg, rgba(255, 106, 0, 0.5), transparent, rgba(255, 106, 0, 0.2));
+    background: linear-gradient(135deg, rgba(255, 106, 0, 0.4), transparent, rgba(255, 106, 0, 0.15));
     z-index: -1;
     opacity: 0;
     transition: opacity 0.4s ease;
@@ -268,7 +307,7 @@ label {
 /* ===== BUTTONS ===== */
 .btn-primary {
     background: linear-gradient(135deg, #FF6A00, #CC5500);
-    color: #FFFFFF;
+    color: #FFFFFF !important;
     padding: 14px 32px;
     border-radius: 12px;
     font-weight: 600;
@@ -284,17 +323,17 @@ label {
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 40px rgba(255, 106, 0, 0.35);
+    box-shadow: 0 12px 40px rgba(255, 106, 0, 0.3);
 }
 
 .btn-secondary {
     background: transparent;
-    color: #FFFFFF;
+    color: #1A1A1A;
     padding: 14px 32px;
     border-radius: 12px;
     font-weight: 600;
     font-size: 0.95rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.15);
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: inline-flex;
@@ -315,8 +354,8 @@ label {
     align-items: center;
     gap: 10px;
     padding: 8px 20px;
-    background: rgba(255, 106, 0, 0.1);
-    border: 1px solid rgba(255, 106, 0, 0.2);
+    background: rgba(255, 106, 0, 0.08);
+    border: 1px solid rgba(255, 106, 0, 0.15);
     border-radius: 100px;
     color: #FF6A00;
     font-size: 0.85rem;
@@ -329,11 +368,11 @@ label {
 /* ===== RECHARTS OVERRIDES ===== */
 .recharts-cartesian-grid-horizontal line,
 .recharts-cartesian-grid-vertical line {
-    stroke: rgba(255, 255, 255, 0.05);
+    stroke: rgba(0, 0, 0, 0.06);
 }
 
 .recharts-text {
-    fill: #9CA3AF;
+    fill: #6B7280;
     font-family: 'Inter', sans-serif;
     font-size: 12px;
 }
@@ -366,4 +405,52 @@ label {
 
 .stagger-children>*:nth-child(6) {
     animation-delay: 0.6s;
+}
+
+/* ===== WHITE/ALPHA OVERRIDES FOR LIGHT THEME ===== */
+/* Glass-like translucent backgrounds on light */
+.bg-white\/5,
+.bg-white\/\[0\.02\],
+.bg-white\/\[0\.04\] {
+    background-color: rgba(0, 0, 0, 0.03) !important;
+}
+
+.bg-white\/10 {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+.border-white\/5,
+.border-white\/10,
+.border-white\/\[0\.06\] {
+    border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+.border-white\/20 {
+    border-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Hero & page header gradient overrides */
+.from-black {
+    --tw-gradient-from: #FFFFFF !important;
+}
+
+.via-black {
+    --tw-gradient-via: #FFFFFF !important;
+}
+
+.to-black {
+    --tw-gradient-to: #FFFFFF !important;
+}
+
+.from-black\/70 {
+    --tw-gradient-from: rgba(255, 255, 255, 0.7) !important;
+}
+
+.from-transparent {
+    --tw-gradient-from: transparent !important;
+}
+
+/* Border bottom for navbar */
+.border-b.border-adhi-orange\/10 {
+    border-bottom-color: rgba(255, 106, 0, 0.1) !important;
 }
